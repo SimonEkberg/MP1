@@ -1,61 +1,67 @@
 package element.composite;
 
 import element.DocElementInterface;
-import element.Element;
+import element.ElementText;
+import visitor.DocumentVisitor;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.function.UnaryOperator;
 import java.util.stream.Collectors;
 
 public class ListElement extends ElementCollection {
-    //Cannot add ElementCollections in a Collection? Element instead of DocElementInterface
-    private List<DocElementInterface> elements;
+
+    ElementText listName;
     public ListElement(){
         super();
-     //   elementList.add(this);
-     //   elements = new ArrayList<>();
     }
 
+    public void setListName(String listName){
+        this.listName = new ElementText(listName);
+    }
     @Override
-    public void addElement(DocElementInterface element) {
-      //  if(element.getClass().isInstance(Element element))
+    public String getListName(){
+        return listNameIsEmpty();
+    }
+    @Override
+    public ListElement addElement(DocElementInterface element) {
         elementList.add(element);
+        return this;
     }
     @Override
     public void updateElement(DocElementInterface element) {
-
-
-
-
     }
 
- /*   @Override
-    public Element getElement(int index) {
-        return elements.get(index);
-    }*/
 
     @Override
     public void deleteElement(DocElementInterface element) {
-        elements.remove(element);
+
+        elementList.remove(element);
+    }
+
+    @Override
+    public void accept(DocumentVisitor visitor) {
+        visitor.visitListElement(this);
     }
 
     @Override
     public String render() {
-        return elementList.stream()
+        return listNameIsEmpty() +elementList.stream()
                 .map(DocElementInterface::render)
                 .collect(Collectors.joining("\n"));
     }
 
- /*   @Override
-    public Iterator<Element> iterator() {
-        return elements.iterator();
-    }*/
+    private String listNameIsEmpty() {
+        if(this.listName == null)
+            return "";
+
+        return this.listName.getText()+"\n";
+
+    }
+
     @Override
     public String toString(){
-        return elementList.stream()
-                .map(DocElementInterface::render)
-                .collect(Collectors.joining("\n"));
+        String s = "(List: ";
+        for(DocElementInterface f: elementList)
+            s += f.toString();
+        s += ") ";
+        return s;
     }
 }

@@ -5,7 +5,6 @@ import element.composite.ElementCollection;
 import element.composite.ListElement;
 
 public class ElementFactory implements ElementFactoryInterface{
-
     @Override
     public Element createDocElement(ElementType elementType, String text) {
         if (elementType == null) {
@@ -13,12 +12,10 @@ public class ElementFactory implements ElementFactoryInterface{
             return null;
         }
         return switch (elementType) {
-            case HEADER -> (new Header(new ElementText(text)));
-            case PARAGRAPH -> (new Paragraph());
-
+            case HEADER -> (new Header(text));
+            case PARAGRAPH -> (new Paragraph(text));
         };
     }
-
     @Override
     public ElementCollection createDocElementCollection(CollectionType collectionType) {
         if (collectionType == null) {

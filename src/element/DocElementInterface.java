@@ -1,8 +1,9 @@
 package element;
 
+import visitor.DocumentVisitor;
+
 public interface DocElementInterface {
 
-  //  void createElement(String text);
+    void accept(DocumentVisitor visitor);
     String render();
-    //void setElementText(String text);
 }

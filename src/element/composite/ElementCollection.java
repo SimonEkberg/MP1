@@ -1,7 +1,6 @@
 package element.composite;
 
 import element.DocElementInterface;
-import element.Element;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -12,12 +11,12 @@ public abstract class ElementCollection implements DocElementInterface, Iterable
     public ElementCollection(){
         this.elementList = new ArrayList<>();
     }
-    public abstract void addElement(DocElementInterface element);
+    public abstract ListElement addElement(DocElementInterface element);
     public abstract void updateElement(DocElementInterface element);
     public abstract void deleteElement(DocElementInterface element);
- //   public abstract Element getElement(int index);
+    public abstract void setListName(String listName);
+    public abstract String getListName();
     public Iterator<DocElementInterface> iterator(){
      return elementList.iterator();
     }
-
 }

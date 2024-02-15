@@ -1,20 +1,13 @@
 package builder;
 
-import element.DocElementInterface;
+import element.composite.Document;
 
-public class ThesisBuilder extends Builder{
-    @Override
-    void buildHeader(DocElementInterface element) {
+/*public class ThesisBuilder implements Builder {
 
-    }
+    private Document document;
 
     @Override
-    void buildParagraph(DocElementInterface element) {
-
+    public Document build() {
+        return null;
     }
-
-    @Override
-    void buildList(DocElementInterface element) {
-
-    }
-}
+}*/

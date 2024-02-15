@@ -1,19 +1,18 @@
 package element;
 
+import visitor.DocumentVisitor;
+
 public class Header extends Element{
 
-  //  private String text;
     private ElementText text;
 
    public Header(){
      super();
    }
-  public Header(ElementText text){
+  public Header(String text){
     super();
-    this.text = text;
+    setElementText(text);
   }
-
-
     @Override
     public void setElementText(String text) {
         this.text = new ElementText(text);
@@ -26,6 +25,11 @@ public class Header extends Element{
 
     @Override
     public String toString(){
-        return text.getText();
+        return "(Header: "+text.getText()+")";
+    }
+
+    @Override
+    public void accept(DocumentVisitor visitor) {
+        visitor.visitHeader(this);
     }
 }

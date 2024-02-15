@@ -1,20 +1,7 @@
 package builder;
 
-import element.DocElementInterface;
+public interface EmailBuilder extends DocumentBuilder {
+    EmailBuilder buildSender(String sender);
+    EmailBuilder buildReceiver(String receiver);
 
-public class EmailBuilder extends Builder{
-    @Override
-    void buildHeader(DocElementInterface element) {
-
-    }
-
-    @Override
-    void buildParagraph(DocElementInterface element) {
-
-    }
-
-    @Override
-    void buildList(DocElementInterface element) {
-
-    }
 }

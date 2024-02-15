@@ -1,23 +1,16 @@
 package element;
 
- //Possible to add form-checks etc. here.
 public class ElementText {
     private String text;
-
-    public ElementText(String text){
+    public ElementText(String text) {
         setText(text);
     }
-
     public String getText(){
-        return this.text;
+        return (text != null)? text : "*No text";
     }
-
     public void setText(String text){
         this.text = text;
     }
-
-
-
 }
 
 
